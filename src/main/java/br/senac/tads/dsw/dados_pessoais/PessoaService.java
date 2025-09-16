@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Service
 public class PessoaService {
 
     private Map<String, PessoaDTO> mapPessoas;
@@ -36,19 +36,24 @@ public class PessoaService {
     }
 
     public PessoaDTO findByUserName(String username) {
-        return new PessoaDTO("fulano", "Fulano da Silva", LocalDate.parse("2010-10-20"), "fulano@gmail", "1123921930",
-                "sdoiahdoa", List.of("Java", "Spring Boot"));
+        return mapPessoas.get(username);
     }
 
     public PessoaDTO addNew(PessoaDTO pessoa) {
-        return null;
+        mapPessoas.put(pessoa.getUsername(), pessoa);
+        return pessoa;
     }
 
-    public PessoaDTO update(String username) {
-        return null;
+    public PessoaDTO update(String username, PessoaDTO pessoa) {
+        if (!mapPessoas.containsKey(username)) {
+            return null;
+        }
+        mapPessoas.put(username, pessoa);
+        return pessoa;
     }
 
     public void delete(String username) {
+        mapPessoas.remove(username);
     }
 
 }
