@@ -12,4 +12,9 @@ public class HeaderController {
     public Map<String, Object> obterTodosHeaders(@RequestHeader Map<String, Object> headers) {
         return headers;
     }
+
+    @GetMapping("/headers/users-agent")
+    public String obterUserAgent(@RequestHeader("user-agent") String x) {
+        return x;
+    }
 }
