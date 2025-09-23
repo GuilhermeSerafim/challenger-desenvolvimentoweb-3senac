@@ -18,15 +18,15 @@ public class PessoaService {
         mapPessoas = new HashMap<>();
         mapPessoas.put("fulano",
                 new PessoaDTO("fulano", "Fulano da Silva", LocalDate.parse("2010-10-20"), "fulano@gmail", "1123921930",
-                        "sdoiahdoa", List.of("Java", "Spring Boot")));
+                        "sdoiahdoa", List.of("Java", "Spring Boot"), "1123921930"));
         mapPessoas.put("ciclano",
                 new PessoaDTO("ciclano", "Ciclano da Silva", LocalDate.parse("2010-10-20"), "ciclano@gmail",
                         "1123921930",
-                        "sdoiahdoa", List.of("Javascript", "React")));
+                        "sdoiahdoa", List.of("Javascript", "React"), "1123921930"));
         mapPessoas.put("beltano",
                 new PessoaDTO("beltano", "Beltano da Silva", LocalDate.parse("2010-10-20"), "beltano@gmail",
                         "1123921930",
-                        "sdoiahdoa", List.of("Javascript", "Angular")));
+                        "sdoiahdoa", List.of("Javascript", "Angular"), "1123921930"));
     }
 
     @GetMapping

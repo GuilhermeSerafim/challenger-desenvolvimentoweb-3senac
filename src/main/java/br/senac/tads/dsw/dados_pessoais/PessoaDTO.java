@@ -3,20 +3,47 @@ package br.senac.tads.dsw.dados_pessoais;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
 public class PessoaDTO {
+    private String repeticaoSenha;
+
+    @NotBlank
+    @Size(min = 3, max = 64)
     private String username;
+
+    @NotBlank
+    @Size(min = 2, max = 1000)
     private String nome;
+
+    @PastOrPresent
     private LocalDate dataNasc;
+
+    @NotBlank
+    @Size(max = 100)
+    @Email()
     private String email;
+
+    @Size(max = 20)
     private String telefone;
+
+    @NotBlank
+    @Size(min = 8)
+    @Pattern(regexp = "^(?!.*__)[a-z][a-z0-9]*(?:_[a-z0-9]+)*$")
     private String senha;
-    private List<String> interesses;
+
+    @Size(min = 1)
+    private List<@NotBlank String> interesses;
 
     public PessoaDTO() {
     }
 
     public PessoaDTO(String username, String nome, LocalDate dataNasc, String email, String telefone, String senha,
-            List<String> interesses) {
+            List<String> interesses, String repeticaoSenha) {
         this.username = username;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -24,6 +51,15 @@ public class PessoaDTO {
         this.telefone = telefone;
         this.senha = senha;
         this.interesses = interesses;
+        this.repeticaoSenha= repeticaoSenha;
+    }
+
+    public String getRepeticaoSenha() {
+        return repeticaoSenha;
+    }
+
+    public void setRepeticaoSenha(String repeticaoSenha) {
+        this.repeticaoSenha = repeticaoSenha;
     }
 
     public String getUsername() {
