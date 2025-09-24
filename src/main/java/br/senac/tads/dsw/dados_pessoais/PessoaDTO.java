@@ -14,6 +14,7 @@ public class PessoaDTO {
 
     @NotBlank
     @Size(min = 3, max = 64)
+    @UserNameUnico
     private String username;
 
     @NotBlank
