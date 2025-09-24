@@ -9,6 +9,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@ConfirmPassword
 public class PessoaDTO {
     private String repeticaoSenha;
 
@@ -34,7 +35,7 @@ public class PessoaDTO {
 
     @NotBlank
     @Size(min = 8)
-    @Pattern(regexp = "^(?!.*__)[a-z][a-z0-9]*(?:_[a-z0-9]+)*$")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", message = "A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.")
     private String senha;
 
     @Size(min = 1)
@@ -52,7 +53,7 @@ public class PessoaDTO {
         this.telefone = telefone;
         this.senha = senha;
         this.interesses = interesses;
-        this.repeticaoSenha= repeticaoSenha;
+        this.repeticaoSenha = repeticaoSenha;
     }
 
     public String getRepeticaoSenha() {
